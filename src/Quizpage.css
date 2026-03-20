@@ -1,0 +1,453 @@
+/* ── Quiz Page Layout ── */
+.quiz-page {
+  min-height: 100vh;
+  background: #0a0a0a;
+}
+
+/* ── Quiz Nav ── */
+.qnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #0a0a0a;
+  border-bottom: 1px solid #1e1e1e;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.qnav-back {
+  background: transparent;
+  border: 1px solid #2a2a2a;
+  border-radius: 100px;
+  padding: 7px 18px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.qnav-back:hover {
+  color: #f0ede8;
+  border-color: #555;
+}
+
+.qnav-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  color: #f0ede8;
+}
+
+/* ── Quiz content wrapper ── */
+.quiz-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+/* ── Quiz Header ── */
+.quiz-header {
+  text-align: center;
+  margin-bottom: 2.25rem;
+}
+
+.quiz-header h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(38px, 7vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 0.65rem;
+  color: #f0ede8;
+}
+
+.quiz-header h1 em {
+  color: #FF8200;
+  font-style: normal;
+}
+
+.quiz-header p {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.65;
+}
+
+/* ── Progress Bar ── */
+.progress {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.pip {
+  height: 3px;
+  width: 40px;
+  border-radius: 2px;
+  background: #222;
+  transition: background 0.3s;
+}
+
+.pip.done,
+.pip.active {
+  background: #FF8200;
+}
+
+.pip.done {
+  opacity: 0.4;
+}
+
+/* ── Question Card ── */
+.qcard {
+  background: #111;
+  border: 1px solid #1e1e1e;
+  border-radius: 18px;
+  padding: 1.75rem 1.5rem 1.5rem;
+}
+
+.q-step {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: #FF8200;
+  margin-bottom: 0.5rem;
+}
+
+.q-text {
+  font-family: 'Syne', sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1.4rem;
+  color: #f0ede8;
+}
+
+/* ── Options ── */
+.opts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .opts { grid-template-columns: 1fr; }
+}
+
+.opt {
+  background: #161616;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 1rem;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  color: #f0ede8;
+  transition: border-color 0.15s, background 0.15s;
+  width: 100%;
+}
+
+.opt:hover {
+  border-color: #FF8200;
+  background: #1a1200;
+}
+
+.opt.sel {
+  border: 1.5px solid #FF8200;
+  background: #1a1200;
+}
+
+.opt-icon {
+  font-size: 26px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.opt-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #f0ede8;
+}
+
+.opt-sub {
+  font-size: 12px;
+  color: #666;
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+/* ── Nav Buttons ── */
+.qnav-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 1.25rem;
+}
+
+.btn-back {
+  padding: 10px 22px;
+  border-radius: 100px;
+  border: 1px solid #2a2a2a;
+  background: transparent;
+  color: #777;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.btn-back:hover {
+  color: #f0ede8;
+  border-color: #555;
+}
+
+.btn-next {
+  padding: 10px 28px;
+  border-radius: 100px;
+  border: none;
+  background: #FF8200;
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.btn-next:disabled { opacity: 0.25; cursor: default; }
+.btn-next:not(:disabled):hover { opacity: 0.85; }
+.btn-next:not(:disabled):active { transform: scale(0.97); }
+
+/* ── Results ── */
+.results {
+  animation: rise 0.4s ease;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.results-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.results-header h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(34px, 7vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.4rem;
+  color: #f0ede8;
+}
+
+.results-header h1 em {
+  color: #FF8200;
+  font-style: normal;
+}
+
+.results-header p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* ── Match Cards ── */
+.match-card {
+  background: #111;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #1e1e1e;
+  margin-bottom: 1.25rem;
+}
+
+.match-card.gold {
+  border: 2px solid #FF8200;
+}
+
+.match-banner {
+  background: #FF8200;
+  color: #fff;
+  text-align: center;
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 7px;
+}
+
+.match-img {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.match-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75);
+}
+
+.match-img-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+.match-pct {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: #FF8200;
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 100px;
+}
+
+.match-body {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.match-type {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FF8200;
+  margin-bottom: 0.3rem;
+}
+
+.match-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #f0ede8;
+  margin-bottom: 0.65rem;
+}
+
+.match-bar-wrap { margin-bottom: 0.9rem; }
+.match-bar-track { height: 4px; background: #1e1e1e; border-radius: 2px; overflow: hidden; }
+.match-bar-fill  { height: 100%; background: #FF8200; border-radius: 2px; transition: width 0.7s ease; }
+
+.match-tagline {
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.match-pills {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.mpill {
+  background: #161616;
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 8px 6px;
+  text-align: center;
+}
+
+.mpill-lbl {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #555;
+  margin-bottom: 3px;
+  font-weight: 600;
+}
+
+.mpill-val {
+  font-size: 12px;
+  font-weight: 600;
+  color: #d0cdc8;
+}
+
+.mpill-val.small {
+  font-size: 10px;
+}
+
+/* ── Results Actions ── */
+.results-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.25rem;
+}
+
+.btn-retake {
+  flex: 1;
+  padding: 12px;
+  text-align: center;
+  border-radius: 100px;
+  border: 1px solid #2a2a2a;
+  background: transparent;
+  color: #777;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.btn-retake:hover {
+  color: #f0ede8;
+  border-color: #555;
+}
+
+.btn-browse {
+  flex: 1;
+  padding: 12px;
+  text-align: center;
+  border-radius: 100px;
+  border: none;
+  background: #f0ede8;
+  color: #0a0a0a;
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btn-browse:hover { opacity: 0.85; }
+
+.results-note {
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+  margin-top: 1.5rem;
+  line-height: 1.6;
+}
+
+.results-note a {
+  color: #FF8200;
+  text-decoration: none;
+}
+
+.results-note a:hover { text-decoration: underline; }
+
+@media (max-width: 500px) {
+  .match-pills { grid-template-columns: repeat(2, 1fr); }
+  .results-actions { flex-direction: column; }
+  .qnav { padding: 0.85rem 1rem; }
+  .quiz-wrap { padding: 2rem 1rem 4rem; }
+}
