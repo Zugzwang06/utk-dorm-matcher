@@ -12,3 +12,5 @@ A website to help incoming UTK freshmen find their best-fit residence hall.
 
 ## Live Site
 [coming soon]
+
+The main goal of this project was to strengthen my React skills by building a complete application from scratch. I chose a UTK dorm matching concept because it gave me an interesting real-world scenario to design around while working with React components, state management, and front-end development. Wasn't necessarily a really needed idea for the community but helped me with my skills regardless.
