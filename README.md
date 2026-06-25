@@ -39,6 +39,6 @@ Running Locally
 
 ```bash
 git clone <repository-url>
-cd dorm-matcher
+cd utk-dorm-matcher
 npm install
 npm start
